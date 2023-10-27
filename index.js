@@ -23,6 +23,9 @@ addBtn.addEventListener("click" , ()=>{
             modalBox.style.display = "block";
             modalBox.style.backgroundColor = "green"
             modalMg.innerHTML = "Todo Removed successfully";
+            setTimeout(()=>{
+                modalBox.style.display = "none";
+            },3000)
 
         })
         newItem.append(newTodoName , newTodoTrash)
@@ -58,7 +61,14 @@ newTodo.addEventListener("keydown" , (event)=>{
             newTodoTrash.className = "fa fa-trash-o delete";
             newItem.append(newTodoName,newTodoTrash)
             newTodoTrash.addEventListener("click" , (event)=>{
-                console.log(event.target)
+                event.target.parentElement.remove();
+                modalBox.style.display = "block";
+                modalBox.style.backgroundColor = "green";
+                modalMg.innerHTML = "Your todo add successfully";
+                newTodo.value = "";
+                setTimeout(()=>{
+                    modalBox.style.display = "none";
+                },3000)
             })
             // newItem.innerHTML = `<span>${newTodo.value}</span>`;
             // newItem.innerHTML +=  `<i class="fa fa-trash-o delete"></i>`;
